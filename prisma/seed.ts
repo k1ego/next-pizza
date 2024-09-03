@@ -54,7 +54,7 @@ async function up() {
 	await prisma.product.createMany({
 		data: products,
 	});
-
+	
 	const pizza1 = await prisma.product.create({
 		data: {
 			name: 'Пепперони фреш',
@@ -78,6 +78,7 @@ async function up() {
 			},
 		},
 	});
+
 
 	const pizza3 = await prisma.product.create({
 		data: {
