@@ -127,91 +127,107 @@ export const ingredients = [
 	},
 ].map((obj, index) => ({ id: index + 1, ...obj }));
 
-
 export const products = [
-  {
-    name: 'Омлет с ветчиной и грибами',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7970321044479C1D1085457A36EB.avif',
-    categoryId: 2,
-  },
-  {
-    name: 'Омлет с пепперони',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE94ECF33B0C46BA410DEC1B1DD6F8.avif',
-    categoryId: 2,
-  },
-  {
-    name: 'Кофе Латте',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.avif',
-    categoryId: 2,
-  },
 	{
-    name: 'Дэнвич ветчина и сыр',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.avif',
-    categoryId: 3,
-  },
-  {
-    name: 'Куриные наггетсы',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EEF45EAE27E22D8E3176ABF5FEFF44.avif',
-    categoryId: 3,
-  },
-  {
-    name: 'Картофель из печи с соусом 🌶',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EED646A9CD324C962C6BEA78124F19.avif',
-    categoryId: 3,
-  },
-  {
-    name: 'Додстер',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796F96D11392A2F6DD73599921B9.avif',
-    categoryId: 3,
-  },
+		name: 'Омлет с ветчиной и грибами',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7970321044479C1D1085457A36EB.avif',
+		categoryId: 2,
+	},
 	{
-    name: 'Острый Додстер 🌶🌶',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FD3B594068F7A752DF8161D04.avif',
-    categoryId: 3,
-  },
-  {
-    name: 'Молочный коктейль Ежевика-малина',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EEB92C801211CBAF91BB30F77568C5.avif',
-    categoryId: 4,
-  },
-  {
-    name: 'Молочный коктейль Пина Колада',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EEA69C98929AD79D1ADB5EF4CF22BB.avif',
-    categoryId: 4,
-  },
+		name: 'Омлет с пепперони',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE94ECF33B0C46BA410DEC1B1DD6F8.avif',
+		categoryId: 2,
+	},
 	{
-    name: 'Молочный коктейль с печеньем Орео',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.avif',
-    categoryId: 4,
-  },
+		name: 'Кофе Латте',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.avif',
+		categoryId: 2,
+	},
 	{
-    name: 'Классический молочный коктейль',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.avif',
-    categoryId: 4,
-  },
-  {
-    name: 'Кофе Карамельный капучино',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.avif',
-    categoryId: 5,
-  },
+		name: 'Дэнвич ветчина и сыр',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.avif',
+		categoryId: 3,
+	},
 	{
-    name: 'Кофе Кокосовый латте',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.avif',
-    categoryId: 5,
-  },
-  {
-    name: 'Айс Капучино',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EEFB6985E52B9FA2C985EBC42C7E64.avif',
-    categoryId: 5,
-  },
+		name: 'Куриные наггетсы',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EEF45EAE27E22D8E3176ABF5FEFF44.avif',
+		categoryId: 3,
+	},
 	{
-    name: 'Кофе Капучино',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61AE1813B4AB42D8927D061035.avif',
-    categoryId: 5,
-  },
-  {
-    name: 'Кофе Латте',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.avif',
-    categoryId: 5,
-  },
+		name: 'Картофель из печи с соусом 🌶',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EED646A9CD324C962C6BEA78124F19.avif',
+		categoryId: 3,
+	},
+	{
+		name: 'Додстер',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE796F96D11392A2F6DD73599921B9.avif',
+		categoryId: 3,
+	},
+	{
+		name: 'Острый Додстер 🌶🌶',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE796FD3B594068F7A752DF8161D04.avif',
+		categoryId: 3,
+	},
+	{
+		name: 'Молочный коктейль Ежевика-малина',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EEB92C801211CBAF91BB30F77568C5.avif',
+		categoryId: 4,
+	},
+	{
+		name: 'Молочный коктейль Пина Колада',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EEA69C98929AD79D1ADB5EF4CF22BB.avif',
+		categoryId: 4,
+	},
+	{
+		name: 'Молочный коктейль с печеньем Орео',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.avif',
+		categoryId: 4,
+	},
+	{
+		name: 'Классический молочный коктейль',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.avif',
+		categoryId: 4,
+	},
+	{
+		name: 'Кофе Карамельный капучино',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.avif',
+		categoryId: 5,
+	},
+	{
+		name: 'Кофе Кокосовый латте',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.avif',
+		categoryId: 5,
+	},
+	{
+		name: 'Айс Капучино',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EEFB6985E52B9FA2C985EBC42C7E64.avif',
+		categoryId: 5,
+	},
+	{
+		name: 'Кофе Капучино',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7D61AE1813B4AB42D8927D061035.avif',
+		categoryId: 5,
+	},
+	{
+		name: 'Кофе Латте',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.avif',
+		categoryId: 5,
+	},
 ];
