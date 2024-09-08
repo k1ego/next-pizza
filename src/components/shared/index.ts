@@ -1,9 +1,12 @@
 export { Categories } from './categories';
+export { ChoosePizzaForm } from './choose-product-form';
 export { Container } from './container';
+export { FilterCheckbox } from './filter-checkbox';
+export { Filters } from './filters';
 export { Header } from './header';
+export * from './modals';
+export { ProductImage } from './product-image';
+export { SearchInput } from './search-input';
 export { SortPopup } from './sort-popup';
 export { Title } from './title';
 export { TopBar } from './top-bar';
-export { FilterCheckbox } from './filter-checkbox';
-export { Filters } from './filters';
-export {SearchInput} from './search-input';
