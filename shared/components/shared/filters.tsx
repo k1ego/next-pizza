@@ -1,14 +1,12 @@
 'use client';
 
-import { CheckboxFiltersGroup } from "../../../shared/components/shared/checkbox-filters-group";
-import { Title } from "../../../shared/components/shared/title";
-import { Input } from "../../../shared/components/ui";
-import { RangeSlider } from "../../../shared/components/ui/range-slider";
-import { useFilters } from "../../../shared/hooks/use-filters";
-import { useIngredients } from "../../../shared/hooks/use-ingredients";
-import { useQueryFilters } from "../../../shared/hooks/use-query-filters";
+import React from 'react';
+import { useFilters, useIngredients, useQueryFilters } from '../../hooks';
+import { Input } from '../ui/input';
 
-
+import { RangeSlider } from '../ui/range-slider';
+import { CheckboxFiltersGroup } from './checkbox-filters-group';
+import { Title } from './title';
 
 interface Props {
 	className?: string;
@@ -26,7 +24,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 	}));
 
 	const updatePrices = (prices: number[]) => {
-		console.log(prices, 999)
+		console.log(prices, 999);
 		filters.setPrices('priceFrom', prices[0]);
 		filters.setPrices('priceTo', prices[1]);
 	};

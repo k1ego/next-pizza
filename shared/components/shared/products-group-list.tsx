@@ -1,9 +1,9 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import React from 'react';
 import { useIntersection } from 'react-use';
-import { useCategoryStore } from '../../../store/category';
+import { cn } from '../../lib/utils';
+import { useCategoryStore } from '../../store/category';
 import { ProductCard } from './product-card';
 import { Title } from './title';
 
