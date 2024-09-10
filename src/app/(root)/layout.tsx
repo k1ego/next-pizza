@@ -1,5 +1,6 @@
-import { Header } from '@/components/shared';
 import type { Metadata } from 'next';
+import { Header } from '../../../shared/components/shared/header';
+
 
 export const metadata: Metadata = {
 	title: 'next-pizza',
@@ -15,12 +16,12 @@ export default function HomeLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body>	
-			<main className='min-h-screen'>
-				<Header />
-				{children}
-				{modal}
-			</main>
+			<body>
+				<main className='min-h-screen'>
+					<Header />
+					{children}
+					{modal}
+				</main>
 			</body>
 		</html>
 	);
