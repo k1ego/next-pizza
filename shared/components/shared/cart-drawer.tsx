@@ -11,7 +11,9 @@ import {
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { PizzaSize, PizzaType } from '../../constants/pizza';
 import { getCartItemDetails } from '../../lib';
+import { useCartStore } from '../../store';
 import { Button } from '../ui';
 import { CartDrawerItem } from './cart-drawer-item';
 
@@ -23,28 +25,47 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
 	children,
 	className,
 }) => {
+	const [totalAmount, fetchCartItems, items] = useCartStore(state => [
+		state.totalAmount,
+		state.fetchCartItems,
+		state.items,
+	]);
+
+	React.useEffect(() => {
+		fetchCartItems();
+	}, []);
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>{children}</SheetTrigger>
 			<SheetContent className='flex flex-col justify-between pb-0 bg-[#F4F1EE]'>
 				<SheetHeader>
 					<SheetTitle>
-						Корзина <span className='font-bold'>3 товара</span>
+						Корзина <span className='font-bold'>{items.length} товара</span>
 					</SheetTitle>
 				</SheetHeader>
 
 				<div className='-mx-6 mt-5 overflow-auto scrollbar flex-1'>
 					<div className='mb-2'>
-					<CartDrawerItem
-						id={1}
-						imageUrl={
-							'https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif'
-						}
-						details={getCartItemDetails(2, 30, [{ name: 'Цыпленок' }])}
-						name={'Чоризо фреш'}
-						price={419}
-						quantity={1}
-					/>
+						{items.map(item => (
+							<CartDrawerItem
+								key={item.id}
+								id={item.id}
+								imageUrl={item.imageUrl}
+								details={
+									item.pizzaSize && item.pizzaType
+										? getCartItemDetails(
+												item.ingredients,
+												item.pizzaType as PizzaType,
+												item.pizzaSize as PizzaSize
+										)
+										: ''
+								}
+								name={item.name}
+								price={item.price}
+								quantity={item.quantity}
+							/>
+						))}
 					</div>
 				</div>
 
@@ -55,7 +76,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
 								Итого
 								<div className='flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2' />
 							</span>
-							<span className='font-bold text-lg'>500 ₽</span>
+							<span className='font-bold text-lg'>{totalAmount}</span>
 						</div>
 
 						<Link href='/cart'>
