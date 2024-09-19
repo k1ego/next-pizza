@@ -1,7 +1,7 @@
 import { CartItemDTO } from '../services/dto/cart.dto';
 
 export const calcCartItemTotalPrice = (item: CartItemDTO): number => {
-	const ingredientPrice = item.ingredients.reduce(
+	const ingredientPrice = item.ingredient.reduce(
 		(acc, ingredient) => acc + ingredient.price,
 		0
 	);
