@@ -59,7 +59,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 			<Skeleton className='w-28 h-6 mb-4 rounded-[8px]' />
 		</div>;
 	}
-	console.log(selected)
+
 
 	return (
 		<div className={className}>
