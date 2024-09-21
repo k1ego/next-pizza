@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Ingredient, ProductItem } from '@prisma/client';
 import React from 'react';
@@ -18,7 +18,7 @@ interface Props {
 	ingredients: Ingredient[];
 	items: ProductItem[];
 	loading?: boolean;
-	onClickAddCart?: VoidFunction;
+	onSubmit: (itemId: number, ingredients: number[]) => void;
 	className?: string;
 }
 
@@ -30,7 +30,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 	imageUrl,
 	items,
 	ingredients,
-	onClickAddCart,
+	onSubmit,
 	className,
 	loading,
 }) => {
@@ -39,6 +39,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 		type,
 		selectedIngredients,
 		availableSizes,
+		currentItemId,
 		setSize,
 		setType,
 		addIngredient,
@@ -53,12 +54,9 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 	);
 
 	const handleClickAdd = () => {
-		onClickAddCart?.();
-		console.log({
-			size,
-			type,
-			ingredients: selectedIngredients,
-		});
+		if (currentItemId) {
+			onSubmit(currentItemId, Array.from(selectedIngredients));
+		}
 	};
 
 	return (
@@ -99,6 +97,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 				</div>
 
 				<Button
+					loading={loading}
 					onClick={handleClickAdd}
 					className='h-[55px] px-10 text-base rounded-[18px] w-full mt-10'
 				>
