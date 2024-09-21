@@ -36,6 +36,7 @@ export default async function ProductPage({
 						consequuntur?
 					</p>
 					<GroupVariants
+						value='2'
 						items={[
 							{
 								name: 'Маленькая',

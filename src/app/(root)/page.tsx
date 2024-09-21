@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { prisma } from '../../../prisma/prisma-client';
 import {
 	Container,
@@ -34,7 +35,9 @@ export default async function Home() {
 				<div className='flex gap-[80px]'>
 					{/* Фильтрация */}
 					<div className='w-[250px]'>
-						<Filters />
+						<Suspense>
+							<Filters />
+						</Suspense>
 					</div>
 
 					{/* Список товаров */}
