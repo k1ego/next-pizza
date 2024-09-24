@@ -70,14 +70,16 @@ export const useFilters = (): ReturnProps => {
 		}));
 	};
 
-	return {
-		sizes,
-		pizzaTypes,
-		prices,
-		selectedIngredients,
-		setSizes: toggleSizes,
-		setPizzaTypes: togglePizzaTypes,
-		setPrices: updatePrice,
-		setSelectedIngredients: toggleIngredients,
-	};
+	return React.useMemo(() => {
+		return {
+			sizes,
+			pizzaTypes,
+			selectedIngredients,
+			prices,
+			setPrices: updatePrice,
+			setPizzaTypes: togglePizzaTypes,
+			setSizes: toggleSizes,
+			setSelectedIngredients: toggleIngredients,
+		};
+	}, [sizes, pizzaTypes, selectedIngredients, prices]);
 };
