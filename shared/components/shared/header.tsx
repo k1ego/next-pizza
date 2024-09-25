@@ -2,7 +2,7 @@ import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import logo from '../../../src/image/logo.png';
+import logo from '../../../src/assets/logo.png';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui';
 import { Container } from './container';
