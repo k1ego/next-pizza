@@ -1,4 +1,5 @@
 export { CartButton } from './cart-button';
+export { CartDrawer } from './cart-drawer';
 export { Categories } from './categories';
 export { ChoosePizzaForm } from './choose-pizza-form';
 export { ChooseProductForm } from './choose-product-form';
@@ -9,8 +10,8 @@ export { Header } from './header';
 export { IngredientItem } from './ingredient-item';
 export * from './modals';
 export { PizzaImage } from './pizza-image';
+export { ProductForm } from './product-form';
 export { SearchInput } from './search-input';
 export { SortPopup } from './sort-popup';
 export { Title } from './title';
 export { TopBar } from './top-bar';
-export { CartDrawer } from './cart-drawer'
