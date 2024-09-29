@@ -1,5 +1,15 @@
 'use client';
 
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import EmtyBox from '../../../src/assets/image/empty-box.png';
+import { PizzaSize, PizzaType } from '../../constants/pizza';
+import { getCartItemDetails } from '../../lib';
+import { cn } from '../../lib/utils';
+import { useCartStore } from '../../store';
+import { Button } from '../ui';
 import {
 	Sheet,
 	SheetClose,
@@ -8,19 +18,9 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from '@/shared/components/ui/sheet';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import EmtyBox from '../../../src/assets/image/empty-box.png';
-import { PizzaSize, PizzaType } from '../../constants/pizza';
-import { getCartItemDetails } from '../../lib';
-import { useCartStore } from '../../store';
-import { Button } from '../ui';
+} from '../ui/sheet';
 import { CartDrawerItem } from './cart-drawer-item';
 import { Title } from './title';
-import { cn } from '../../lib/utils';
 
 interface Props {
 	className?: string;
@@ -61,7 +61,12 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
 		<Sheet>
 			<SheetTrigger asChild>{children}</SheetTrigger>
 			<SheetContent className='flex flex-col justify-between pb-0 bg-[#F4F1EE]'>
-				<div className={cn('flex flex-col h-full', !totalAmount && 'justify-center')}>
+				<div
+					className={cn(
+						'flex flex-col h-full',
+						!totalAmount && 'justify-center'
+					)}
+				>
 					{totalAmount > 0 && (
 						<SheetHeader>
 							<SheetTitle>
