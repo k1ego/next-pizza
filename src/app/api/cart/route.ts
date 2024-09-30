@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 		const userCart = await findOrCreateCart(token);
 
 		const data = (await req.json()) as CreateCartItemValues;
-		
+
 		const findCartItem = await prisma.cartItem.findFirst({
 			where: {
 				cartId: userCart.id,
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
 			},
 		});
 
-		// Если товар был найден, делаем + 1 
+		// Если товар был найден, делаем + 1
 		if (findCartItem) {
 			await prisma.cartItem.update({
 				where: {
@@ -79,16 +79,17 @@ export async function POST(req: NextRequest) {
 					quantity: findCartItem.quantity + 1,
 				},
 			});
+		} else {
+			// если товар не был найден, создаем
+			await prisma.cartItem.create({
+				data: {
+					cartId: userCart.id,
+					productItemId: data.productItemId,
+					quantity: 1,
+					ingredient: { connect: data.ingredients?.map(id => ({ id })) },
+				},
+			});
 		}
-		// если товар не был найден, создаем
-		await prisma.cartItem.create({
-			data: {
-				cartId: userCart.id,
-				productItemId: data.productItemId,
-				quantity: 1,
-				ingredient: { connect: data.ingredients?.map(id => ({ id })) },
-			},
-		});
 		// обновяем корзину в любом случае
 		const updatedUserCart = await updateCartTotalAmount(token);
 		// генерируем ответ
@@ -96,7 +97,6 @@ export async function POST(req: NextRequest) {
 		// вшиваем в ответ токен
 		resp.cookies.set('cartToken', token);
 		return resp;
-
 	} catch (error) {
 		console.log(error);
 		console.log('[CART_POST] Server error', error);

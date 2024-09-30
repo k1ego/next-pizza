@@ -1,6 +1,6 @@
 import { Nunito } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-import logo from '../image/logo.png';
+import logo from '../assets/logo.png';
 import './globals.css';
 
 const nunito = Nunito({

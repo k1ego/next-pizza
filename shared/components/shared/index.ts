@@ -1,8 +1,11 @@
 export { CartButton } from './cart-button';
 export { CartDrawer } from './cart-drawer';
 export { Categories } from './categories';
+export { CheckoutItem } from './checkout-item';
+export { CheckoutItemSkeleton } from './checkout-item-skeleton';
 export { ChoosePizzaForm } from './choose-pizza-form';
 export { ChooseProductForm } from './choose-product-form';
+export { CheckoutItemDetails } from './ckeckout-item-details';
 export { Container } from './container';
 export { FilterCheckbox } from './filter-checkbox';
 export { Filters } from './filters';
@@ -15,3 +18,5 @@ export { SearchInput } from './search-input';
 export { SortPopup } from './sort-popup';
 export { Title } from './title';
 export { TopBar } from './top-bar';
+export { WhiteBlock } from './white-block';
+export { CheckoutSidebar } from './checkout-sidebar';
