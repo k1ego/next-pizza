@@ -1,20 +1,43 @@
 'use client';
 
-import { Check } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from 'react-hook-form';
+
 import {
-	CheckoutItem,
 	CheckoutSidebar,
 	Container,
 	Title,
-	WhiteBlock,
 } from '../../../../shared/components/shared';
-import { Input, Textarea } from '../../../../shared/components/ui';
-import { PizzaSize, PizzaType } from '../../../../shared/constants/pizza';
+import {
+	CheckoutAddressForm,
+	CheckoutCart,
+	CheckoutPersonalForm,
+} from '../../../../shared/components/shared/checkout';
+import {
+	checkoutFormSchema,
+	CheckoutFormValues,
+} from '../../../../shared/constants/checkout-form-schema';
 import { useCart } from '../../../../shared/hooks';
-import { getCartItemDetails } from '../../../../shared/lib';
 
 export default function CheckoutPage() {
-	const { totalAmount, updateItemQuantity, removeCartItem, items } = useCart();
+	const { totalAmount, updateItemQuantity, removeCartItem, items, loading } =
+		useCart();
+
+	const form = useForm<CheckoutFormValues>({
+		resolver: zodResolver(checkoutFormSchema),
+		defaultValues: {
+			email: '',
+			firstName: '',
+			lastName: '',
+			phone: '',
+			address: '',
+			comment: '',
+		},
+	});
+
+	const onSubmit = (data: CheckoutFormValues) => {
+		console.log(data);
+	};
 
 	const onClickCountButton = (
 		id: number,
@@ -31,68 +54,32 @@ export default function CheckoutPage() {
 				text='Оформление заказа'
 				className='font-extrabold mb-8 text-[36px]'
 			/>
-			<div className='flex gap-10'>
-				{/* Левая часть */}
-				<div className='flex flex-col gap-10 flex-1 mb-20'>
-					<WhiteBlock title='1. Коризна'>
-						<div className='flex flex-col gap-5'>
-							{items.map(item => (
-								<CheckoutItem
-									key={item.id}
-									id={item.id}
-									imageUrl={item.imageUrl}
-									details={getCartItemDetails(
-										item.ingredients,
-										item.pizzaType as PizzaType,
-										item.pizzaSize as PizzaSize
-									)}
-									name={item.name}
-									price={item.price}
-									quantity={item.quantity}
-									disabled={item.disabled}
-									onClickCountButton={type =>
-										onClickCountButton(item.id, item.quantity, type)
-									}
-									onClickRemove={() => removeCartItem(item.id)}
-								/>
-							))}
-						</div>
-					</WhiteBlock>
-
-					<WhiteBlock title='2. Персональные данные'>
-						<div className='grid grid-cols-2 gap-5'>
-							<Input className='text-base' name='firstName' placeholder='Имя' />
-							<Input
-								className='text-base'
-								name='lastName'
-								placeholder='Фамилия'
+			<FormProvider {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)}>
+					<div className='flex gap-10'>
+						{/* Левая часть */}
+						<div className='flex flex-col gap-10 flex-1 mb-20'>
+							<CheckoutCart
+								onClickCountButton={onClickCountButton}
+								removeCartItem={removeCartItem}
+								items={items}
+								loading={loading}
 							/>
-							<Input className='text-base' name='emal' placeholder='E-Mail' />
-							<Input className='text-base' name='phone' placeholder='Телефон' />
-						</div>
-					</WhiteBlock>
 
-					<WhiteBlock title='3. Адрес доставки'>
-						<div className='flex flex-col gap-5'>
-							<Input
-								className='text-base'
-								name='firstName'
-								placeholder='Адрес доставки'
+							<CheckoutPersonalForm
+								className={loading ? 'opacity-40 pointer-events-none' : ''}
 							/>
-							<Textarea
-								className='text-base'
-								placeholder='Комментарий к заказу'
-								rows={5}
-							/>
-						</div>
-					</WhiteBlock>
-				</div>
 
-				{/* Правая часть */}
-				<div className='w-[450px]'>
-					<CheckoutSidebar totalAmount={totalAmount} />
-				</div>
-			</div>
+							<CheckoutAddressForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
+						</div>
+
+						{/* Правая часть */}
+						<div className='w-[450px]'>
+							<CheckoutSidebar totalAmount={totalAmount} loading={loading} />
+						</div>
+					</div>
+				</form>
+			</FormProvider>
 		</Container>
 	);
 }
