@@ -5,3 +5,5 @@ export { getCartDetails } from './get-cart-details';
 export { getCartItemDetails } from './get-cart-item-details';
 export { getPizzaDetails } from './get-pizza-details';
 export { findPizzas } from './cart-pizzas';
+export { sendEmail } from './send-email'
+export { createPayment } from './create-payment'
