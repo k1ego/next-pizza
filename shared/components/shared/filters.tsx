@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { useFilters, useIngredients, useQueryFilters } from '../../hooks';
-import { Input } from '../ui/input';
-
+import { useFilters } from '../../hooks/use-filters';
+import { useIngredients } from '../../hooks/use-ingredients';
+import { useQueryFilters } from '../../hooks/use-query-filters';
+import { Input } from '../ui';
 import { RangeSlider } from '../ui/range-slider';
 import { CheckboxFiltersGroup } from './checkbox-filters-group';
 import { Title } from './title';
