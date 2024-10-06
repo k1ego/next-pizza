@@ -25,3 +25,4 @@ export { Title } from './title';
 export { TopBar } from './top-bar';
 export { WhiteBlock } from './white-block';
 export * from './email-templates';
+export {ProfileButton} from './profile-button'

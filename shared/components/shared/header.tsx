@@ -1,16 +1,17 @@
 'use client';
-import { User } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 import logo from '../../../src/assets/logo.png';
 import { cn } from '../../lib/utils';
-import { Button } from '../ui';
 import { CartButton } from './cart-button';
 import { Container } from './container';
+import { AuthModal } from './modals';
+import { ProfileButton } from './profile-button';
 import { SearchInput } from './search-input';
-import { useSearchParams } from 'next/navigation';
-import toast from 'react-hot-toast';
 
 interface Props {
 	hasSearch?: boolean;
@@ -23,15 +24,18 @@ export const Header: React.FC<Props> = ({
 	hasCart = true,
 	className,
 }) => {
-	const searchParams = useSearchParams()
+
+	const [openAuthModal, setOpenAuthModal] = React.useState(false);
+
+	const searchParams = useSearchParams();
 
 	React.useEffect(() => {
 		if (searchParams.has('paid')) {
 			setTimeout(() => {
-				toast.success('Заказ успешно оплачен! Информация отправлена на почту.')
+				toast.success('Заказ успешно оплачен! Информация отправлена на почту.');
 			}, 500);
 		}
-	}, [])
+	}, []);
 
 	return (
 		<header className={cn('border-b', className)}>
@@ -57,11 +61,8 @@ export const Header: React.FC<Props> = ({
 
 				{/* Правая часть */}
 				<div className='flex items-center gap-3'>
-					<Button variant='outline' className='flex items-center gap-1'>
-						<User size={16} />
-						Войти
-					</Button>
-
+					<AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+					<ProfileButton onClickSignIn={() => setOpenAuthModal(true)}/>
 					{hasCart && <CartButton />}
 				</div>
 			</Container>

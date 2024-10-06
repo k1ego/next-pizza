@@ -37,7 +37,7 @@ async function up() {
 			{
 				fullName: 'Admin Admin',
 				email: 'admin@test.ru',
-				password: hashSync('1111111', 10),
+				password: hashSync('1111', 10),
 				verified: new Date(),
 				role: 'ADMIN',
 			},
@@ -54,7 +54,7 @@ async function up() {
 	await prisma.product.createMany({
 		data: products,
 	});
-	
+
 	const pizza1 = await prisma.product.create({
 		data: {
 			name: 'Пепперони фреш',
@@ -78,7 +78,6 @@ async function up() {
 			},
 		},
 	});
-
 
 	const pizza3 = await prisma.product.create({
 		data: {
@@ -149,15 +148,15 @@ async function up() {
 	});
 
 	await prisma.cartItem.create({
-    data: {
-      productItemId: 1,
-      cartId: 1,
-      quantity: 2,
-      ingredient: {
-        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
-      },
-    },
-  });
+		data: {
+			productItemId: 1,
+			cartId: 1,
+			quantity: 2,
+			ingredient: {
+				connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+			},
+		},
+	});
 }
 
 async function down() {
