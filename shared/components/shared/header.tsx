@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import toast from 'react-hot-toast';
 import logo from '../../../src/assets/logo.png';
@@ -23,15 +23,29 @@ export const Header: React.FC<Props> = ({
 	hasCart = true,
 	className,
 }) => {
+	const router = useRouter();
 	const [openAuthModal, setOpenAuthModal] = React.useState(false);
 
 	const searchParams = useSearchParams();
 
 	React.useEffect(() => {
+		let toastMessage = '';
+		
 		if (searchParams.has('paid')) {
+			toastMessage = 'Почта успешно подтверждена!';
+		}
+
+		if (searchParams.has('verified')) {
+			toastMessage = 'Почта успешно подтверждена!'
+		}
+
+		if (toastMessage) {
 			setTimeout(() => {
-				toast.success('Заказ успешно оплачен! Информация отправлена на почту.');
-			}, 500);
+				router.replace('/');
+				toast.success(toastMessage, {
+					duration: 3000,
+				});
+			}, 1000);
 		}
 	}, []);
 
