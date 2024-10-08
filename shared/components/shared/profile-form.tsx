@@ -11,6 +11,7 @@ import { Title } from './title';
 import { FormInput } from './form';
 import { Button } from '../ui';
 import { formRegisterSchema, TFormRegisterValues } from './modals/auth-modal/forms/schema';
+import { updateUserInfo } from '@/app/actions';
 
 interface Props {
   data: User;

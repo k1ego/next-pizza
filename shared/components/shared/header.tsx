@@ -1,5 +1,4 @@
 'use client';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -24,7 +23,6 @@ export const Header: React.FC<Props> = ({
 	hasCart = true,
 	className,
 }) => {
-
 	const [openAuthModal, setOpenAuthModal] = React.useState(false);
 
 	const searchParams = useSearchParams();
@@ -61,8 +59,11 @@ export const Header: React.FC<Props> = ({
 
 				{/* Правая часть */}
 				<div className='flex items-center gap-3'>
-					<AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
-					<ProfileButton onClickSignIn={() => setOpenAuthModal(true)}/>
+					<AuthModal
+						open={openAuthModal}
+						onClose={() => setOpenAuthModal(false)}
+					/>
+					<ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
 					{hasCart && <CartButton />}
 				</div>
 			</Container>
