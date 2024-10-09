@@ -1,18 +1,17 @@
-import { Cart, CartItem, Ingredient, Product, ProductItem } from "@prisma/client";
+import { Cart, CartItem, Ingredient, Product, ProductItem } from '@prisma/client';
 
 export type CartItemDTO = CartItem & {
-	productItem: ProductItem & {
-		product: Product;
-	}
-	ingredient: Ingredient[];
-}
+  productItem: ProductItem & {
+    product: Product;
+  };
+  ingredients: Ingredient[];
+};
 
 export interface CartDTO extends Cart {
-	items: CartItemDTO[]
+  items: CartItemDTO[];
 }
 
-// это передается от браузера к серверу вариации пицц
 export interface CreateCartItemValues {
-	productItemId: number;
-	ingredients?: number[];
+  productItemId: number;
+  ingredients?: number[];
 }

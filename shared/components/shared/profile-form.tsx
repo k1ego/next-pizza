@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { TFormRegisterValues, formRegisterSchema } from './modals/auth-modal/forms/schemas';
 import { User } from '@prisma/client';
 import toast from 'react-hot-toast';
 import { signOut } from 'next-auth/react';
@@ -10,7 +11,7 @@ import { Container } from './container';
 import { Title } from './title';
 import { FormInput } from './form';
 import { Button } from '../ui';
-import { formRegisterSchema, TFormRegisterValues } from './modals/auth-modal/forms/schema';
+import { updateUserInfo } from '@/app/actions';
 
 interface Props {
   data: User;
