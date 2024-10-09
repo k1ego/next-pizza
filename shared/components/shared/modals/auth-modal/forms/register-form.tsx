@@ -4,10 +4,10 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import toast from 'react-hot-toast';
-import { FormInput } from '../../../form';
-import { formRegisterSchema, TFormRegisterValues } from './schema';
-import { Button } from '../../../../ui';
 import { registerUser } from '@/app/actions';
+import { TFormRegisterValues, formRegisterSchema } from './schemas';
+import { FormInput } from '../../../form';
+import { Button } from '@/shared/components/ui';
 
 interface Props {
   onClose?: VoidFunction;

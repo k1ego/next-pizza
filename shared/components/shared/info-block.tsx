@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Button } from '../ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Title } from './title';
 import Link from 'next/link';
-import { cn } from '../../lib/utils';
-import Image from 'next/image';
-import Lock from '../../../src/assets/image/lock.png';
+import { cn } from '@/shared/lib/utils';
 
 interface Props {
   title: string;
@@ -39,7 +36,7 @@ export const InfoBlock: React.FC<Props> = ({ className, title, text, imageUrl })
         </div>
       </div>
 
-      <Image src={Lock} alt={title} width={300} />
+      <img src={imageUrl} alt={title} width={300} />
     </div>
   );
 };

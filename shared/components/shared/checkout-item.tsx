@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
+import { cn } from '@/shared/lib/utils';
 import { X } from 'lucide-react';
 import { CartItemProps } from './cart-item-details/cart-item-details.types';
 import * as CartItemDetails from './cart-item-details';
-import { cn } from '../../lib/utils';
 
 interface Props extends CartItemProps {
   onClickCountButton?: (type: 'plus' | 'minus') => void;
